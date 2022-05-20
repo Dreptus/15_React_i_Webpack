@@ -1,3 +1,4 @@
+import { clear } from '@testing-library/user-event/dist/clear';
 import ReactDOM from 'react-dom';
 import Container from './Comonents/Container/Container';
 

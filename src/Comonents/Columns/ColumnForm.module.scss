@@ -1,0 +1,12 @@
+@use 'sass:math';
+@import '../../styles/settings.scss';
+
+.columnForm {
+    min-width: 200px;
+    background: $color-light;
+    border: 1px solid lighten($color-dark, 60%);
+    padding: $base-size ($base-size * 1.5);
+    margin:  $base-size*0.8 $base-size*0.4;
+    font-family: $font-text;
+    border-radius: $radius;
+}
