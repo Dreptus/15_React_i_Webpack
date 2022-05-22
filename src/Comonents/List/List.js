@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import shortid from "shortid";
-import ColumnForm from "../Columns/ColumnForm";
-import ColumnsCreating from "../Columns/ColumnsCreating.js";
 
+import Column from "../Columns/Column";
+import ColumnForm from "../Columns/ColumnForm";
 import classes from "./List.module.scss";
 
 const List = () => {
@@ -35,32 +35,22 @@ const List = () => {
       ],
     },
   ]);
-
   const addColumn = (newColumn) => {
     setColumns([
       ...columns,
-      { id: shortid(), title: newColumn.title, icon: newColumn.icon, card:[] },
+      {
+        id: shortid(),
+        title: newColumn.title,
+        icon: newColumn.icon,
+        cards: [],
+      },
     ]);
   };
-
-  const addCard = (newCard, columnId) => {
-    const columnsUpdated = columns.map((column) => {
-      if (column.id === columnId)
-        return {
-          ...column,
-          cards: [...column.cards, { id: shortid(), title: newCard.title }],
-        };
-      else return column;
-    });
-
-    setColumns(columnsUpdated);
-  };
-
   return (
-    <div className={classes.list}>
+    <div>
       <header className={classes.header}>
-        <h2 className={classes.title}>
-          Things to do <span>Soon!</span>
+        <h2>
+          Things to do<span>soon!</span>
         </h2>
       </header>
       <p className={classes.description}>
@@ -68,16 +58,18 @@ const List = () => {
       </p>
       <section className={classes.columns}>
         {columns.map((column) => (
-          <ColumnsCreating
+          <Column
             key={column.id}
-            id={column.id}
             title={column.title}
             icon={column.icon}
             cards={column.cards}
           />
         ))}
-        <ColumnForm handleSubmit={addColumn} />
+        {/* <Column title="Books" icon="book" />
+        <Column title="Movies" icon="film" />
+        <Column title="Games" icon="gamepad" /> */}
       </section>
+      <ColumnForm action={addColumn} />
     </div>
   );
 };

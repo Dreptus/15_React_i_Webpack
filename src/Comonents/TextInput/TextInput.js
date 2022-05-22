@@ -3,13 +3,13 @@ import classes from "./TextInput.module.scss";
 const TextInput = (props) => {
   return (
     <input
-      type="text"
       className={classes.input}
-      placeholder={props.placeholder}
       value={props.value}
       onChange={props.onChange}
-    ></input>
+      placeholder={props.placeholder}
+      type="text"
+    />
   );
-};
+  }
 
 export default TextInput;
