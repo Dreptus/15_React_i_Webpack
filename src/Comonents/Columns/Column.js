@@ -14,7 +14,7 @@ const Column = (props) => {
            <Card key={card.id} title={card.title}/>
         ))}
       </ul>
-      <CardForm columnId={props.id}/>
+      <CardForm action={props.addCard} columnId={props.id} />
     </article>
   );
 };

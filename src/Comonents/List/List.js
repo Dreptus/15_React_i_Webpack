@@ -35,7 +35,7 @@ const List = () => {
       ],
     },
   ]);
-  
+
   const addColumn = (newColumn) => {
     setColumns([
       ...columns,
@@ -74,9 +74,11 @@ const List = () => {
         {columns.map((column) => (
           <Column
             key={column.id}
+            id={column.id}
             title={column.title}
             icon={column.icon}
             cards={column.cards}
+            addCard={addCard}
           />
         ))}
         {/* <Column title="Books" icon="book" />
